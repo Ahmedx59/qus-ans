@@ -14,8 +14,14 @@ class Question(models.Model):
     content = models.TextField(max_length=1000)
 
 
+    def __str__(self):
+        return self.question
+
 class Answers(models.Model):
     author = models.ForeignKey(User , on_delete=models.CASCADE , related_name='author_answer')
     answer = models.TextField(max_length=1000)
     question = models.ForeignKey(Question,on_delete=models.CASCADE , related_name='question_answer')
     created_at = models.TimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.answer

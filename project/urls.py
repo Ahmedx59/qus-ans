@@ -20,3 +20,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls'))
 ]
+
+# url of static and media
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL , document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)
