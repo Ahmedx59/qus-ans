@@ -1,12 +1,13 @@
 from django.urls import path 
-from .views import question_list
+from . import views
 
 app_name = 'chat'
  
 #   chat/
 urlpatterns = [
-    path('question/',question_list,name='ques_list'),
-    
+    path('',views.question_list,name='ques_list'),
+    path('detail' , views.question_detail , name = 'question_detail')
+
 ]
 
 
