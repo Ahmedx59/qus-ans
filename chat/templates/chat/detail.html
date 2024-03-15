@@ -17,6 +17,16 @@
         <li>{{que.content}}</li>
         
     </ul>
+
+    <ul>
+        {% for answer in ans %}
+        <li>{{answer.author}}</li>
+        <li>{{answer.answer}}</li>
+        <li>{{answer.question}}</li>
+        <li>{{answer.created_at}}</li>
+        <hr>
+        {% endfor %}
+    </ul>
     
 </body>
 </html>

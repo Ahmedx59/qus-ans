@@ -8,4 +8,5 @@ def question_list(request):
 
 def question_detail(request,id):
     question = Question.objects.get(id=id)
-    return render(request,'chat/detail.html',{'que':question})
+    answer = Answers.objects.filter(question=question)
+    return render(request,'chat/detail.html',{'que':question,'ans':answer})
