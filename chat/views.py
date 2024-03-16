@@ -10,3 +10,4 @@ def question_detail(request,id):
     question = Question.objects.get(id=id)
     answer = Answers.objects.filter(question=question)
     return render(request,'chat/detail.html',{'que':question,'ans':answer})
+
