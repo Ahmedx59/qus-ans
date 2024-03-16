@@ -4,4 +4,4 @@ from .models import Question,Answers
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        exculde = ['author']
+        exclude = ['author']

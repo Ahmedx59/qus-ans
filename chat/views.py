@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Question,Answers 
+from .forms import QuestionForm
+
 
 
 def question_list(request):
@@ -11,3 +13,6 @@ def question_detail(request,id):
     answer = Answers.objects.filter(question=question)
     return render(request,'chat/detail.html',{'que':question,'ans':answer})
 
+def question_add(request):
+    form = QuestionForm()
+    return render(request,'chat/add.html',{'form':form})
