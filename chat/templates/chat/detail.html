@@ -22,4 +22,14 @@
     </ul>
 
     <a href="{% url 'chat:qusetion_delete' que.id %}"><button type="submit">delete</button></a>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+    
+
+        <button type="submit">add</button>
+    </form>
+
+        
+  
 {% endblock body %}

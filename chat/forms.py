@@ -10,4 +10,4 @@ class QuestionForm(forms.ModelForm):
 class Answersform(forms.ModelForm):
     class Meta:
         model = Answers
-        exclude = ['author']
+        exclude = ['author','question']
