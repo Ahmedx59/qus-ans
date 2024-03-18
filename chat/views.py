@@ -24,3 +24,13 @@ def question_add(request):
     else:
         form = QuestionForm()
     return render(request,'chat/add.html',{'form':form})
+
+def qusetion_delete(request,id):
+    delet = Question.objects.get(id=id)
+    delet.delete()
+    return redirect('/chat/')
+
+
+
+
+

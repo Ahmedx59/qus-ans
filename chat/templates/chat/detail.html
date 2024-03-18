@@ -20,4 +20,6 @@
         <hr>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'chat:qusetion_delete' que.id %}"><button type="submit">delete</button></a>
 {% endblock body %}
