@@ -17,6 +17,7 @@
         <li>{{answer.answer}}</li>
         <li>{{answer.question}}</li>
         <li>{{answer.created_at}}</li>
+        <a href="{% url 'chat:answer_delete' answer.id %}"><button>delete answer</button></a>
         <hr>
         {% endfor %}
     </ul>
@@ -29,6 +30,7 @@
 
         <button type="submit">add</button>
     </form>
+    
 
         
   

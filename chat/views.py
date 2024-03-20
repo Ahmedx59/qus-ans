@@ -27,50 +27,6 @@ def question_detail(request,id):
                                               'form':form})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def question_add(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
@@ -89,6 +45,9 @@ def qusetion_delete(request,id):
     return redirect('/chat/')
 
 
-
+def answer_delete(request,id):
+    delete = Answers.objects.get(id=id)
+    delete .delete()
+    return redirect(f'/chat/{delete.question.id}')
 
 
