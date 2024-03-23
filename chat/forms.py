@@ -7,7 +7,7 @@ class QuestionForm(forms.ModelForm):
         exclude = ['author']
 
 
-class Answersform(forms.ModelForm):
+class AnswersForm(forms.ModelForm):
     class Meta:
         model = Answers
         exclude = ['author','question']
