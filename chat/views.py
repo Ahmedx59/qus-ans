@@ -6,7 +6,7 @@ from .forms import QuestionForm,AnswersForm
 
 def question_list(request):
     question = Question.objects.all()
-    return render(request,'chat/question.html',{'que':question})
+    return render(request,'chat/question_list.html',{'que':question})
 
 def question_detail(request,id):
     question = Question.objects.get(id=id)
@@ -21,7 +21,7 @@ def question_detail(request,id):
             my_form.save()
     else:
         form = AnswersForm()  
-    return render(request,'chat/detail.html',{'que':question,
+    return render(request,'chat/question_detail.html',{'que':question,
                                               'ans':answer,
                                               'form':form})
 

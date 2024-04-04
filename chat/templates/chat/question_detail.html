@@ -10,7 +10,7 @@
         <li>{{que.content}}</li>
         
     </ul>
-    <a href="{% url 'chat:answer_edit' que.id %}"><button>edit question</button></a>
+    <a href="{% url 'chat:question_edit' que.id %}"><button>edit question</button></a>
     <ul>
         {% for answer in ans %}
         <li>{{answer.author}}</li>
