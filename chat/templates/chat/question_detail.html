@@ -1,36 +1,83 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 {% block body %}
-    <h1>{{que.question}}    detail:</h1>
-    <ul>
-        
-        <li>{{que.author}}</li>
-        <li>{{que.question}}</li>
-        <li>{{que.tags}}</li>
-        <li>{{que.created_at}}</li>
-        <li>{{que.content}}</li>
-        
-    </ul>
-    <a href="{% url 'chat:question_edit' que.id %}"><button>edit question</button></a>
-    <ul>
-        {% for answer in ans %}
-        <li>{{answer.author}}</li>
-        <li>{{answer.answer}}</li>
-        <li>{{answer.question}}</li>
-        <li>{{answer.created_at}}</li>
-        <a href="{% url 'chat:answer_delete' answer.id %}"><button>delete answer</button></a>
-        <a href="{% url 'chat:answer_edit' answer.id %}">edit answer</a>
-        <hr>
-        {% endfor %}
-    </ul>
+    <h1 class="text-center my-5 " >{{que.question}} detail</h1>
 
-    <a href="{% url 'chat:qusetion_delete' que.id %}"><button type="submit">delete</button></a>
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-    
 
-        <button type="submit">add</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <table class="table table-hover table-dark">
+                    <thead>
+                      <tr>
+                        <td>author</td>
+                        <td>{{que.author}}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>question</td>
+                        <td>{{que.question}}</td>
+                      </tr>
+                      <tr>
+                        <td>tags</td>
+                        <td>{{que.tags}}</td>
+                      </tr>
+                      <tr>
+                        <td>created_at</td>
+                        <td>{{que.created_at}}</td>
+                      </tr>
+                      <tr>
+                        <td>content</td>
+                        <td>{{que.content}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <a class="btn btn-outline-info" href="{% url 'chat:question_edit' que.id %}">edit question</a>
+                    <a class="btn btn-light mx-5 " href="{% url 'chat:qusetion_delete' que.id %}">delete</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 my-5 mx-auto ">
+                {% for answer in ans %}
+                    <div class="card text-center my-5 ">
+                        <div class="card-header">
+                        Answer
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title">Auther : {{answer.author}} </h5>
+                        <p class="card-text">{{answer.answer}}</p>
+                        <a href="{% url 'chat:answer_edit' answer.id %}" class="btn btn-outline-primary">Edit answer </a>
+                        <a href="{% url 'chat:answer_delete' answer.id %}" class="btn btn-outline-danger">Delete answer </a>
+                        </div>
+                        <div class="card-footer text-body-secondary">
+                            {{answer.created_at}}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 my-5 mx">
+                <form method="post" class="border p-3 bg-body-tertiary">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+            
+                    {% bootstrap_button button_type="submit" content="Add" %}
+                </form>
+            </div>
+        </div>
+        <a class="btn btn-info ms-5 my-5 " href="{% url 'chat:ques_list' %} ">do back to main menu</a>
+    </div>
+
     
 
         
