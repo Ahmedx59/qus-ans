@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
-    <h3>Questions:</h3>
-    <ul>
-        {% for item in question_list %}
-            <li>{{item.question}}</li>
-        {% endfor %}
-    </ul>
+    <h3 class="text-center my-5">Questions</h3>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                {% for item in question_list %}
+                    <div class="card w-75 mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.question}}</h5>
+                            <p class="card-text">{% lorem 1 b random %}</p>
+                            <a href="{% url 'chat:question_detail' item.id %}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
