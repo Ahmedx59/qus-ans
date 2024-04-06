@@ -6,7 +6,7 @@ from .forms import QuestionForm,AnswersForm
 
 def question_list(request):
     question = Question.objects.all()
-    return render(request,'chat/question_list.html',{'que':question})
+    return render(request,'chat/question_list.html',{'question_list':question})
 
 def question_detail(request,id):
     question = Question.objects.get(id=id)
